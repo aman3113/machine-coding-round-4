@@ -35,8 +35,7 @@ const SinglePostPage = () => {
 export default SinglePostPage;
 
 function SingleComment({ commentDetails, postUsername }) {
-	const { username, picUrl, likes, comment, createdAt, commentId } =
-		commentDetails;
+	const { username, picUrl, likes, comment, createdAt } = commentDetails;
 	const createdAtDate = new Date(createdAt);
 	const minute = createdAtDate.getMinutes();
 
