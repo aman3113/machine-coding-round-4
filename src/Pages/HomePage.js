@@ -6,7 +6,7 @@ const HomePage = () => {
 	return (
 		<div className="w-full flex gap-3 p-4">
 			<PostsSection />
-			{/* <FilterSection /> */}
+			<FilterSection />
 		</div>
 	);
 };

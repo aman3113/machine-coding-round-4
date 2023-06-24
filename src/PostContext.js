@@ -51,7 +51,7 @@ const reducerFunction = (state, action) => {
 			return [...dateSortedArr];
 
 		case "SORTBYUPVOTES":
-			const upvotesSortedArr = [...state].sort((a, b) => a.upvotes - b.upvotes);
+			const upvotesSortedArr = [...state].sort((a, b) => b.upvotes - a.upvotes);
 			return [...upvotesSortedArr];
 
 		default:
@@ -71,6 +71,12 @@ const PostContextProvider = ({ children }) => {
 	function handleBookMark(id) {
 		dispatch({ type: "BOOKMARK", payload: id });
 	}
+	function handleFilterChange(e) {
+		const { value } = e.target;
+		value === "latest"
+			? dispatch({ type: "SORTBYDATE", payload: "" })
+			: dispatch({ type: "SORTBYUPVOTES", payload: "" });
+	}
 
 	const [state, dispatch] = useReducer(reducerFunction, forumData.posts);
 
@@ -82,6 +88,7 @@ const PostContextProvider = ({ children }) => {
 				handleUpvote,
 				handleDownVote,
 				handleBookMark,
+				handleFilterChange,
 			}}
 		>
 			{children}
